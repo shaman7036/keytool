@@ -86,3 +86,13 @@ stkeytool program 2 "$KEY"         # 2. запрограмувати слот 2
 stkeytool test 2                   # 3. спонтанна перевірка
 stkeytool chal 2 001122334455 "$KEY"   # 4. перевірка з локальним HMAC
 echo "$KEY" | stkeytool chal 2 -   # 5. байти з stdin
+
+
+Завантаження релізу:
+
+   # зі сторінки Releases на GitHub, або:
+   curl -LO https://github.com/shaman7036/keytool/releases/download/v0.1.0/stkeytool-linux-x86_64-v0.1.0.tar.gz
+   tar -xzf stkeytool-linux-x86_64-v0.1.0.tar.gz
+   sudo install -m 755 stkeytool /usr/local/bin/
+   sudo install -m 644 70-stm32key.rules /etc/udev/rules.d/70-stkeytool.rules
+   sudo udevadm control --reload-rules && sudo udevadm trigger
